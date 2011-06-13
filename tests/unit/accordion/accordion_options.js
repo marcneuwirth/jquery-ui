@@ -3,14 +3,12 @@
 module( "accordion: options", accordionSetupTeardown() );
 
 test( "{ active: default }", function() {
-	expect( 2 );
 	var element = $( "#list1" ).accordion();
 	equal( element.accordion( "option", "active" ), 0 );
 	accordion_state( element, 1, 0, 0 );
 });
 
 test( "{ active: false }", function() {
-	expect( 7 );
 	var element = $( "#list1" ).accordion({
 		active: false,
 		collapsible: true
@@ -32,7 +30,6 @@ test( "{ active: false }", function() {
 });
 
 test( "{ active: Number }", function() {
-	expect( 8 );
 	var element = $( "#list1" ).accordion({
 		active: 2
 	});
@@ -54,7 +51,6 @@ test( "{ active: Number }", function() {
 
 if ( $.uiBackCompat === false ) {
 	test( "{ active: -Number }", function() {
-		expect( 8 );
 		var element = $( "#list1" ).accordion({
 			active: -1
 		});
@@ -78,7 +74,6 @@ if ( $.uiBackCompat === false ) {
 // TODO: add animation tests
 
 test( "{ collapsible: false }", function() {
-	expect( 4 );
 	var element = $( "#list1" ).accordion({
 		active: 1
 	});
@@ -92,7 +87,6 @@ test( "{ collapsible: false }", function() {
 });
 
 test( "{ collapsible: true }", function() {
-	expect( 6 );
 	var element = $( "#list1" ).accordion({
 		active: 1,
 		collapsible: true
@@ -112,7 +106,6 @@ test( "{ collapsible: true }", function() {
 });
 
 test( "{ event: null }", function() {
-	expect( 5 );
 	var element = $( "#list1" ).accordion({
 		event: null
 	});
@@ -129,7 +122,6 @@ test( "{ event: null }", function() {
 });
 
 test( "{ event: custom }", function() {
-	expect( 11 );
 	var element = $( "#list1" ).accordion({
 		event: "custom1 custom2"
 	});
@@ -161,7 +153,6 @@ test( "{ event: custom }", function() {
 });
 
 test( "{ header: default }", function() {
-	expect( 2 );
 	// default: > li > :first-child,> :not(li):even
 	// > :not(li):even
 	accordion_state( $( "#list1" ).accordion(), 1, 0, 0);
@@ -170,7 +161,6 @@ test( "{ header: default }", function() {
 });
 
 test( "{ header: custom }", function() {
-	expect( 6 );
 	var element = $( "#navigationWrapper" ).accordion({
 		header: "h2"
 	});
@@ -184,13 +174,11 @@ test( "{ header: custom }", function() {
 });
 
 test( "{ heightStyle: 'auto' }", function() {
-	expect( 3 );
 	var element = $( "#navigation" ).accordion({ heightStyle: "auto" });
-	accordion_equalHeights( element, 95, 130 );
+	equalHeights( element, 95, 130 );
 });
 
 test( "{ heightStyle: 'content' }", function() {
-	expect( 3 );
 	var element = $( "#navigation" ).accordion({ heightStyle: "content" });
 	var sizes = element.find( ".ui-accordion-content" ).map(function() {
 		return $( this ).height();
@@ -201,14 +189,12 @@ test( "{ heightStyle: 'content' }", function() {
 });
 
 test( "{ heightStyle: 'fill' }", function() {
-	expect( 3 );
 	$( "#navigationWrapper" ).height( 500 );
 	var element = $( "#navigation" ).accordion({ heightStyle: "fill" });
-	accordion_equalHeights( element, 446, 458 );
+	equalHeights( element, 446, 458 );
 });
 
 test( "{ heightStyle: 'fill' } with sibling", function() {
-	expect( 3 );
 	$( "#navigationWrapper" ).height( 500 );
 	$( "<p>Lorem Ipsum</p>" )
 		.css({
@@ -218,11 +204,10 @@ test( "{ heightStyle: 'fill' } with sibling", function() {
 		})
 		.prependTo( "#navigationWrapper" );
 	var element = $( "#navigation" ).accordion({ heightStyle: "fill" });
-	accordion_equalHeights( element , 346, 358);
+	equalHeights( element , 346, 358);
 });
 
 test( "{ heightStyle: 'fill' } with multiple siblings", function() {
-	expect( 3 );
 	$( "#navigationWrapper" ).height( 500 );
 	$( "<p>Lorem Ipsum</p>" )
 		.css({
@@ -247,11 +232,10 @@ test( "{ heightStyle: 'fill' } with multiple siblings", function() {
 		})
 		.prependTo( "#navigationWrapper" );
 	var element = $( "#navigation" ).accordion({ heightStyle: "fill" });
-	accordion_equalHeights( element, 296, 308 );
+	equalHeights( element, 296, 308 );
 });
 
 test( "{ icons: false }", function() {
-	expect( 8 );
 	var element = $( "#list1" );
 	function icons( on ) {
 		deepEqual( element.find( "span.ui-icon").length, on ? 3 : 0 );
@@ -270,7 +254,6 @@ test( "{ icons: false }", function() {
 });
 
 test( "{ icons: hash }", function() {
-	expect( 3 );
 	var element = $( "#list1" ).accordion({
 		icons: { activeHeader: "a1", header: "h1" }
 	});

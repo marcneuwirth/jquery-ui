@@ -3,7 +3,6 @@
 module( "accordion: core", accordionSetupTeardown() );
 
 $.each( { div: "#list1", ul: "#navigation", dl: "#accordion-dl" }, function( type, selector ) {
-	expect( 4 );
 	test( "markup structure: " + type, function() {
 		var element = $( selector ).accordion();
 		ok( element.hasClass( "ui-accordion" ), "main element is .ui-accordion" );
@@ -18,7 +17,6 @@ $.each( { div: "#list1", ul: "#navigation", dl: "#accordion-dl" }, function( typ
 });
 
 test( "handle click on header-descendant", function() {
-	expect( 1 );
 	var element = $( "#navigation" ).accordion();
 	$( "#navigation h2:eq(1) a" ).click();
 	accordion_state( element, 0, 1, 0 );

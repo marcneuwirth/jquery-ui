@@ -3,7 +3,6 @@
 module( "accordion (deprecated): expanded active option, activate method", accordionSetupTeardown() );
 
 test( "activate, numeric", function() {
-	expect( 5 );
 	var element = $( "#list1" ).accordion({ active: 1 });
 	accordion_state( element, 0, 1, 0 );
 	element.accordion( "activate", 2 );
@@ -17,7 +16,6 @@ test( "activate, numeric", function() {
 });
 
 test( "activate, numeric, collapsible:true", function() {
-	expect( 3 );
 	var element = $( "#list1" ).accordion({ collapsible: true });
 	element.accordion( "activate", 2 );
 	accordion_state( element, 0, 0, 1 );
@@ -28,7 +26,6 @@ test( "activate, numeric, collapsible:true", function() {
 });
 
 test( "activate, boolean, collapsible: true", function() {
-	expect( 2 );
 	var element = $( "#list1" ).accordion({ collapsible: true });
 	element.accordion( "activate", 2 );
 	accordion_state( element, 0, 0, 1 );
@@ -37,7 +34,6 @@ test( "activate, boolean, collapsible: true", function() {
 });
 
 test( "activate, boolean, collapsible: false", function() {
-	expect( 2 );
 	var element = $( "#list1" ).accordion();
 	element.accordion( "activate", 2 );
 	accordion_state( element, 0, 0, 1 );
@@ -46,7 +42,6 @@ test( "activate, boolean, collapsible: false", function() {
 });
 
 test( "activate, string expression", function() {
-	expect( 4 );
 	var element = $( "#list1" ).accordion({ active: "h3:last" });
 	accordion_state( element, 0, 0, 1 );
 	element.accordion( "activate", ":first" );
@@ -58,7 +53,6 @@ test( "activate, string expression", function() {
 });
 
 test( "activate, jQuery or DOM element", function() {
-	expect( 3 );
 	var element = $( "#list1" ).accordion({ active: $( "#list1 h3:last" ) });
 	accordion_state( element, 0, 0, 1 );
 	element.accordion( "activate", $( "#list1 h3:first" ) );
@@ -68,7 +62,6 @@ test( "activate, jQuery or DOM element", function() {
 });
 
 test( "{ active: Selector }", function() {
-	expect( 2 );
 	var element = $("#list1").accordion({
 		active: "h3:last"
 	});
@@ -78,7 +71,6 @@ test( "{ active: Selector }", function() {
 });
 
 test( "{ active: Element }", function() {
-	expect( 2 );
 	var element = $( "#list1" ).accordion({
 		active: $( "#list1 h3:last" )[ 0 ]
 	});
@@ -88,7 +80,6 @@ test( "{ active: Element }", function() {
 });
 
 test( "{ active: jQuery Object }", function() {
-	expect( 2 );
 	var element = $( "#list1" ).accordion({
 		active: $( "#list1 h3:last" )
 	});
@@ -104,16 +95,14 @@ test( "{ active: jQuery Object }", function() {
 module( "accordion (deprecated) - height options", accordionSetupTeardown() );
 
 test( "{ autoHeight: true }, default", function() {
-	expect( 3 );
-	accordion_equalHeights( $( "#navigation" ).accordion({ autoHeight: true }), 95, 130 );
+	equalHeights($('#navigation').accordion({ autoHeight: true }), 95, 130);
 });
 
-test( "{ autoHeight: false }", function() {
-	expect( 3 );
-	var element = $( "#navigation" ).accordion({ autoHeight: false });
+test("{ autoHeight: false }", function() {
+	var element = $('#navigation').accordion({ autoHeight: false });
 	var sizes = [];
-	element.find( ".ui-accordion-content" ).each(function() {
-		sizes.push( $(this).height() );
+	element.find(".ui-accordion-content").each(function() {
+		sizes.push($(this).height());
 	});
 	ok( sizes[0] >= 70 && sizes[0] <= 105, "was " + sizes[0] );
 	ok( sizes[1] >= 98 && sizes[1] <= 126, "was " + sizes[1] );
@@ -121,14 +110,12 @@ test( "{ autoHeight: false }", function() {
 });
 
 test( "{ fillSpace: true }", function() {
-	expect( 3 );
 	$( "#navigationWrapper" ).height( 500 );
 	var element = $( "#navigation" ).accordion({ fillSpace: true });
-	accordion_equalHeights( element, 446, 458 );
+	equalHeights( element, 446, 458 );
 });
 
 test( "{ fillSapce: true } with sibling", function() {
-	expect( 3 );
 	$( "#navigationWrapper" ).height( 500 );
 	$( "<p>Lorem Ipsum</p>" )
 		.css({
@@ -138,11 +125,10 @@ test( "{ fillSapce: true } with sibling", function() {
 		})
 		.prependTo( "#navigationWrapper" );
 	var element = $( "#navigation" ).accordion({ fillSpace: true });
-	accordion_equalHeights( element , 346, 358);
+	equalHeights( element , 346, 358);
 });
 
 test( "{ fillSpace: true } with multiple siblings", function() {
-	expect( 3 );
 	$( "#navigationWrapper" ).height( 500 );
 	$( "<p>Lorem Ipsum</p>" )
 		.css({
@@ -167,7 +153,7 @@ test( "{ fillSpace: true } with multiple siblings", function() {
 		})
 		.prependTo( "#navigationWrapper" );
 	var element = $( "#navigation" ).accordion({ fillSpace: true });
-	accordion_equalHeights( element, 296, 308 );
+	equalHeights( element, 296, 308 );
 });
 
 
@@ -177,7 +163,6 @@ test( "{ fillSpace: true } with multiple siblings", function() {
 module( "accordion (deprecated) - icons", accordionSetupTeardown() );
 
 test( "icons, headerSelected", function() {
-	expect( 3 );
 	var element = $( "#list1" ).accordion({
 		icons: { headerSelected: "a1", header: "h1" }
 	});
@@ -194,7 +179,6 @@ test( "icons, headerSelected", function() {
 module( "accordion (deprecated) - resize", accordionSetupTeardown() );
 
 test( "resize", function() {
-	expect( 6 );
 	var element = $( "#navigation" )
 		.parent()
 			.height( 300 )
@@ -202,11 +186,11 @@ test( "resize", function() {
 		.accordion({
 			heightStyle: "fill"
 		});
-	accordion_equalHeights( element, 246, 258 );
+	equalHeights( element, 246, 258 );
 
 	element.parent().height( 500 );
 	element.accordion( "resize" );
-	accordion_equalHeights( element, 446, 458 );
+	equalHeights( element, 446, 458 );
 });
 
 
@@ -216,7 +200,6 @@ test( "resize", function() {
 module( "accordion (deprecated) - navigation", accordionSetupTeardown() );
 
 test( "{ navigation: true, navigationFilter: header }", function() {
-	expect( 2 );
 	var element = $( "#navigation" ).accordion({
 		navigation: true,
 		navigationFilter: function() {
@@ -228,11 +211,10 @@ test( "{ navigation: true, navigationFilter: header }", function() {
 });
 
 test( "{ navigation: true, navigationFilter: content }", function() {
-	expect( 2 );
-	var element = $( "#navigation" ).accordion({
+	var element = $("#navigation").accordion({
 		navigation: true,
 		navigationFilter: function() {
-			return /\?p=1\.1\.3\.2$/.test( this.href );
+			return /\?p=1\.1\.3\.2$/.test(this.href);
 		}
 	});
 	equal( element.accordion( "option", "active" ), 2 );
